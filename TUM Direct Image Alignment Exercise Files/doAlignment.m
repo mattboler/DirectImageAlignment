@@ -1,3 +1,5 @@
+addpath('functions')
+
 K = [517.3 0 318.6;	0 516.5 255.3; 0 0 1];
 c2 = double(imreadbw('rgb/1305031102.175304.png'));
 c1 = double(imreadbw('rgb/1305031102.275326.png'));
@@ -23,3 +25,19 @@ d2 = double(imread('depth/1341847982.998830.png'))/5000;
 
 %%
 % TODO
+
+% Initilize estimate
+xi = [0 0 0 0 0 0]';
+
+% Using 5 pyramid levels
+for level = 5 : -1 : 1
+    % 1. Get downscaled image, depth image, and K
+    
+    prevErr = 1e10;
+    % 2. For at most 20 iterations, perform Guass-Newton to minimize error
+    for i = 1 : 20
+        
+    end
+    
+    % 3. Set pose estimate and move on to next level
+end
