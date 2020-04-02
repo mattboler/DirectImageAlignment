@@ -26,8 +26,7 @@ d2 = double(imread('depth/1341847982.998830.png'))/5000;
 %%
 % TODO
 
-% We attempt to align an incoming image to a reference image and depth
-% image
+% We attempt to align an incoming image to a reference I
 
 % Initilize estimate
 xi = [0 0 0 0 0 0]';
@@ -41,8 +40,8 @@ for level = 5 : -1 : 1
     image = downscaleImage(c2, level);
     
     
-    % 2. For at most 20 iterations, perform Guass-Newton to minimize error
     prevErr = 1e10;
+    % 2. For at most 20 iterations, perform Guass-Newton to minimize error
     for i = 1 : 20
         
     end
