@@ -1,5 +1,5 @@
-function [ r, err, imageTrans ] = calcErr( imageRef, depthRef, image, xi, K, display ) 
-%CALCERR Summary of this function goes here
+function [ imageTrans ] = warpImage(imageRef, depthRef, image, xi, K)
+%WARP Summary of this function goes here
 %   Detailed explanation goes here
 
 T = se3Exp(xi);
@@ -30,14 +30,6 @@ end
 
 % Interpolate to find values of image at transformed points
 imageTrans = interp2(image, xCoords, yCoords);
-err = imageRef - imageTrans;
-r = reshape(err, [], 1);
-
-if display == 1
-    imagesc(err);
-    colormap(gray);
-    set(gca, 'CLim', [-1,1]);
-end
 
 end
 

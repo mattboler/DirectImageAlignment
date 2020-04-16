@@ -36,7 +36,10 @@ prevErr = 1e10;
 threshold = 1e-5;
 
 figure(1)
-calcErr(c1, d1, c2, xi, K, 1);
+[initialR, initialErrorImage] = calcErr(c1, d1, c2, xi, K, 0);
+imagesc(abs(initialErrorImage));
+colormap(gray)
+title("Initial Residuals")
 
 % Using 5 pyramid levels
 for level = 6 : -1 : 1
@@ -69,4 +72,7 @@ end
 
 xi
 figure(2)
-calcErr(imageRef, depthRef, image, xi, KLevel, 1);
+[finalR, errImage] = calcErr(imageRef, depthRef, image, xi, KLevel, 0);
+imagesc(abs(errImage))
+colormap(gray)
+title("Final Residuals")
